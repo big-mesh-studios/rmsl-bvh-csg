@@ -20,6 +20,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # rmsl is an external dependency of the BVH packages; clone it next to
+      # this repository so the `file:../../../rmsl` dev dependencies resolve.
+      - name: Checkout rmsl
+        uses: actions/checkout@v4
+        with:
+          repository: big-mesh-studios/rmsl
+          path: ../rmsl
+
       - uses: pnpm/action-setup@v4
         with:
           version: 11
@@ -29,7 +37,13 @@ jobs:
           node-version: 22
           cache: pnpm
 
-      - run: pnpm install --frozen-lockfile
+      - name: Build rmsl
+        working-directory: ../rmsl
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm build
+
+      - run: pnpm install
 
       - run: pnpm build
 
