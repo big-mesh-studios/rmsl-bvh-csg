@@ -1,0 +1,38 @@
+{
+  "name": "@random-mesh/rmsl-bvh",
+  "version": "0.0.1",
+  "description": "A BVH implementation for RMSL geometries, with R3F-style triangle intersection primitives. A focused TypeScript port of three-mesh-bvh.",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/rmsl-bvh.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/rmsl-bvh.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "keywords": [
+    "rmsl",
+    "bvh",
+    "raycast",
+    "geometry",
+    "three-mesh-bvh"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "build:watch": "vite build --watch",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "@random-mesh/rmsl": ">=1.17.0"
+  },
+  "devDependencies": {
+    "@random-mesh/rmsl": "file:../../../rmsl"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "@random-mesh/rmsl-bvh-csg",
+  "version": "0.0.1",
+  "description": "Fast, flexible constructive solid geometry (CSG) for RMSL, built on rmsl-bvh. A TypeScript port of three-bvh-csg.",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/rmsl-bvh-csg.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/rmsl-bvh-csg.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "keywords": [
+    "rmsl",
+    "csg",
+    "bvh",
+    "geometry",
+    "constructive-solid-geometry"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "build:watch": "vite build --watch",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@random-mesh/rmsl-bvh": "workspace:*"
+  },
+  "peerDependencies": {
+    "@random-mesh/rmsl": ">=1.17.0"
+  },
+  "devDependencies": {
+    "@random-mesh/rmsl": "file:../../../rmsl"
+  }
+}
