@@ -1,0 +1,19 @@
+{
+  "name": "rmsl-bvh-csg-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "check-types": "tsc --noEmit",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@random-mesh/rmsl": "file:../../rmsl",
+    "@random-mesh/rmsl-bvh-csg": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "vite": "^7.1.4"
+  }
+}
