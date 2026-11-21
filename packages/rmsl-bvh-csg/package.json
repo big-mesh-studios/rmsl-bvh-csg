@@ -36,6 +36,6 @@
     "@random-mesh/rmsl": ">=1.17.0"
   },
   "devDependencies": {
-    "@random-mesh/rmsl": "file:../../../rmsl"
+    "@random-mesh/rmsl": "^1.17.0"
   }
 }

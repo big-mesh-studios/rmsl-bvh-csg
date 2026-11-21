@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@random-mesh/rmsl": "file:../../rmsl",
+    "@random-mesh/rmsl": "^1.17.0",
     "@random-mesh/rmsl-bvh-csg": "workspace:*"
   },
   "devDependencies": {

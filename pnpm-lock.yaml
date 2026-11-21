@@ -30,8 +30,8 @@ importers:
   demos:
     dependencies:
       '@random-mesh/rmsl':
-        specifier: file:../../rmsl
-        version: file:../rmsl(vite@7.3.8(@types/node@22.20.5))
+        specifier: ^1.17.0
+        version: 1.17.0(vite@7.3.8(@types/node@22.20.5))
       '@random-mesh/rmsl-bvh-csg':
         specifier: workspace:*
         version: link:../packages/rmsl-bvh-csg
@@ -46,8 +46,8 @@ importers:
   packages/rmsl-bvh:
     devDependencies:
       '@random-mesh/rmsl':
-        specifier: file:../../../rmsl
-        version: file:../rmsl(vite@7.3.8(@types/node@22.20.5))
+        specifier: ^1.17.0
+        version: 1.17.0(vite@7.3.8(@types/node@22.20.5))
 
   packages/rmsl-bvh-csg:
     dependencies:
@@ -56,8 +56,8 @@ importers:
         version: link:../rmsl-bvh
     devDependencies:
       '@random-mesh/rmsl':
-        specifier: file:../../../rmsl
-        version: file:../rmsl(vite@7.3.8(@types/node@22.20.5))
+        specifier: ^1.17.0
+        version: 1.17.0(vite@7.3.8(@types/node@22.20.5))
 
 packages:
 
@@ -233,8 +233,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@random-mesh/rmsl@file:../rmsl':
-    resolution: {directory: ../rmsl, type: directory}
+  '@random-mesh/rmsl@1.17.0':
+    resolution: {integrity: sha512-91PpR+44hg8aQ6oVGCze+cchN8OL2+ew6mQ8dw6VFODtKKSPnLOPbIpBEl/pbs6TeuN3BfFPXRgd+puqbNBqQw==}
     peerDependencies:
       vite: '>=5.0.0'
     peerDependenciesMeta:
@@ -890,7 +890,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.3
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  '@random-mesh/rmsl@file:../rmsl(vite@7.3.8(@types/node@22.20.5))':
+  '@random-mesh/rmsl@1.17.0(vite@7.3.8(@types/node@22.20.5))':
     dependencies:
       '@webgpu/types': 0.1.74
       esbuild: 0.28.2
