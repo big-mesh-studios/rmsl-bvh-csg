@@ -6,6 +6,7 @@ import {
   Mesh,
   MeshStandardMaterial,
   PerspectiveCamera,
+  PlaneGeometry,
   Scene,
   SphereGeometry,
   WebGLRenderer,
@@ -38,13 +39,19 @@ const sun = new DirectionalLight(0xfff3e0, 2.5);
 sun.position.set(6, 10, 8);
 scene.add(sun);
 
+// ground
+const ground = new Mesh(new PlaneGeometry(8, 8), new MeshStandardMaterial({ color: 0x22262e, roughness: 0.9 }));
+ground.rotation.x = -Math.PI / 2;
+ground.position.y = -1.2;
+scene.add(ground);
+
 const materialA = new MeshStandardMaterial({ color: 0xff5533, roughness: 0.3, metalness: 0.4 });
 const materialB = new MeshStandardMaterial({
   color: 0x3399ff,
   roughness: 0.3,
   metalness: 0.4,
   transparent: true,
-  opacity: 0.35,
+  opacity: 0.15,
 });
 
 const brushA = new Brush(new BoxGeometry(1.6, 1.6, 1.6), materialA);
@@ -56,15 +63,26 @@ brushA.updateMatrixWorld(true);
 brushB.updateMatrix();
 brushB.updateMatrixWorld(true);
 
-const ghostA = new Mesh(brushA.geometry, materialA);
+const ghostA = new Mesh(
+  brushA.geometry,
+  new MeshStandardMaterial({ color: 0xff5533, roughness: 0.3, metalness: 0.4, transparent: true, opacity: 0.12 }),
+);
 ghostA.matrix.copy(brushA.matrixWorld);
 ghostA.matrixAutoUpdate = false;
-const ghostB = new Mesh(brushB.geometry, materialB);
+const ghostB = new Mesh(
+  brushB.geometry,
+  new MeshStandardMaterial({ color: 0x3399ff, roughness: 0.3, metalness: 0.4, transparent: true, opacity: 0.12 }),
+);
 ghostB.matrix.copy(brushB.matrixWorld);
 ghostB.matrixAutoUpdate = false;
 scene.add(ghostA, ghostB);
 
-const resultMaterial = new MeshStandardMaterial({ color: 0xffaa00, roughness: 0.25, metalness: 0.6 });
+const resultMaterial = new MeshStandardMaterial({
+  color: 0xffcc33,
+  roughness: 0.2,
+  metalness: 0.3,
+  emissive: 0x332200,
+});
 const resultMesh = new Mesh(brushA.geometry, resultMaterial);
 scene.add(resultMesh);
 
@@ -120,6 +138,7 @@ function rebuild(): void {
   resultMesh.matrix.copy(brushA.matrixWorld);
   resultMesh.matrixAutoUpdate = false;
   info.textContent = `${operations.find((o) => o.value === current)!.name} — ${result.geometry.index!.count / 3} tris — volume ${computeMeshVolume(result).toFixed(3)}`;
+  console.log("rebuilt", info.textContent);
 }
 
 for (const op of operations) {
